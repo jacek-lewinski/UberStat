@@ -3,6 +3,9 @@ package pl.jaceklewinski.uberstat.services;
 import org.springframework.stereotype.Service;
 import pl.jaceklewinski.uberstat.models.forms.TripForm;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 @Service
 public class CalculateTrip {
 
@@ -24,7 +27,13 @@ public class CalculateTrip {
 
     public float calculateBruttoPrice() {
         float priceBrutto;
+
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        decimalFormat.setRoundingMode(RoundingMode.HALF_EVEN);
+
         priceBrutto = this.price * 100 / 75;
+        decimalFormat.format(priceBrutto);
+
         return priceBrutto;
     }
 }
