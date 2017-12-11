@@ -10,6 +10,7 @@ import java.text.DecimalFormat;
 public class CalculateTrip {
 
     private final double driverPercentage = 0.75;
+    private final double commission = 0.25;
 
     private final double priceByKilometer = 1.3;
     private final double priceByMinute = 0.25;
@@ -63,5 +64,17 @@ public class CalculateTrip {
         fullPrice = ((kilometersPrice + minutesPrice + this.startingPrice) * this.multiplier) * this.driverPercentage;
 
         return fullPrice;
+    }
+
+    public double calculateCommission() {
+        return this.price * this.commission;
+    }
+
+    public double calculateEarnings() {
+        return this.price * this.driverPercentage;
+    }
+
+    public double differentBetweenPriceAndCalculatedPrice() {
+        return calculateEarnings() - calculatePriceBasedOnInputData();
     }
 }
