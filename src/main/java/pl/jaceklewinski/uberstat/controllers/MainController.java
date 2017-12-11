@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.jaceklewinski.uberstat.models.forms.TripForm;
+import pl.jaceklewinski.uberstat.services.CalculateTrip;
 
 @Controller
 public class MainController {
@@ -19,8 +20,14 @@ public class MainController {
 
     @PostMapping("/")
     public String indexPost(@ModelAttribute("tripForm") TripForm tripForm) {
-        System.out.println(tripForm.toString());
 
+        CalculateTrip calculateTrip = new CalculateTrip(tripForm);
+
+
+
+
+        System.out.println(tripForm.toString());
+        System.out.println(calculateTrip.calculateBruttoPrice());
         return "index";
     }
 }
