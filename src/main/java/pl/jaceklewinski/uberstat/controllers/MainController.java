@@ -29,6 +29,7 @@ public class MainController {
         System.out.println(tripForm.toString());
         System.out.println(calculateTrip.calculateBruttoPrice());
         System.out.println(calculateTrip.convertTimeToMinutes());
+        System.out.println(calculateTrip.calculatePriceBasedOnInputData());
         return "index";
     }
 }

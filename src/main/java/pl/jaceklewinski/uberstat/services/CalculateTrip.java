@@ -9,6 +9,12 @@ import java.text.DecimalFormat;
 @Service
 public class CalculateTrip {
 
+    private final double driverPercentage = 0.75;
+
+    private final double priceByKilometer = 1.3;
+    private final double priceByMinute = 0.25;
+    private final int startingPrice = 4;
+
     private double price;
     private int minutes;
     private int seconds;
@@ -45,5 +51,17 @@ public class CalculateTrip {
         minutesConverted = this.minutes + secondsConverted;
 
         return minutesConverted;
+    }
+
+    public double calculatePriceBasedOnInputData() {
+        double fullPrice;
+        double kilometersPrice;
+        double minutesPrice;
+
+        kilometersPrice = this.distance * this.priceByKilometer;
+        minutesPrice = convertTimeToMinutes() * this.priceByMinute;
+        fullPrice = ((kilometersPrice + minutesPrice + this.startingPrice) * this.multiplier) * this.driverPercentage;
+
+        return fullPrice;
     }
 }
