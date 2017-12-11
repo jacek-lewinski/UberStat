@@ -2,16 +2,16 @@ package pl.jaceklewinski.uberstat.models.forms;
 
 public class TripForm {
 
-    private float price;
+    private double price;
     private int minutes;
     private int seconds;
-    private float distance;
-    private float multiplier;
+    private double distance;
+    private double multiplier;
 
     public TripForm() {
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -35,7 +35,7 @@ public class TripForm {
         this.seconds = seconds;
     }
 
-    public float getDistance() {
+    public double getDistance() {
         return distance;
     }
 
@@ -43,7 +43,7 @@ public class TripForm {
         this.distance = distance;
     }
 
-    public float getMultiplier() {
+    public double getMultiplier() {
         return multiplier;
     }
 
@@ -58,20 +58,25 @@ public class TripForm {
 
         TripForm tripForm = (TripForm) o;
 
-        if (Float.compare(tripForm.price, price) != 0) return false;
+        if (Double.compare(tripForm.price, price) != 0) return false;
         if (minutes != tripForm.minutes) return false;
         if (seconds != tripForm.seconds) return false;
-        if (Float.compare(tripForm.distance, distance) != 0) return false;
-        return Float.compare(tripForm.multiplier, multiplier) == 0;
+        if (Double.compare(tripForm.distance, distance) != 0) return false;
+        return Double.compare(tripForm.multiplier, multiplier) == 0;
     }
 
     @Override
     public int hashCode() {
-        int result = (price != +0.0f ? Float.floatToIntBits(price) : 0);
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(price);
+        result = (int) (temp ^ (temp >>> 32));
         result = 31 * result + minutes;
         result = 31 * result + seconds;
-        result = 31 * result + (distance != +0.0f ? Float.floatToIntBits(distance) : 0);
-        result = 31 * result + (multiplier != +0.0f ? Float.floatToIntBits(multiplier) : 0);
+        temp = Double.doubleToLongBits(distance);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(multiplier);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 

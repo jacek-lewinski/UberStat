@@ -9,11 +9,11 @@ import java.text.DecimalFormat;
 @Service
 public class CalculateTrip {
 
-    private float price;
+    private double price;
     private int minutes;
     private int seconds;
-    private float distance;
-    private float multiplier;
+    private double distance;
+    private double multiplier;
 
     public CalculateTrip() {}
 
@@ -25,8 +25,8 @@ public class CalculateTrip {
         this.multiplier = tripForm.getMultiplier();
     }
 
-    public float calculateBruttoPrice() {
-        float priceBrutto;
+    public double calculateBruttoPrice() {
+        double priceBrutto;
 
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         decimalFormat.setRoundingMode(RoundingMode.HALF_EVEN);
@@ -37,11 +37,11 @@ public class CalculateTrip {
         return priceBrutto;
     }
 
-    public float convertTimeToMinutes() {
-        float minutesConverted;
-        float secondsConverted;
+    public double convertTimeToMinutes() {
+        double minutesConverted;
+        double secondsConverted;
 
-        secondsConverted = (float) this.seconds / 60;
+        secondsConverted = (double) this.seconds / 60;
         minutesConverted = this.minutes + secondsConverted;
 
         return minutesConverted;
