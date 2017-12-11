@@ -23,10 +23,10 @@ public class MainController {
         CalculateTrip calculateTrip = new CalculateTrip(tripForm);
 
         model.addAttribute("price", tripForm.getPrice());
-//        model.addAttribute("commission", calculateTrip);
-//        model.addAttribute("earnings", calculateTrip);
+        model.addAttribute("commission", calculateTrip.calculateCommission());
+        model.addAttribute("earnings", calculateTrip.calculateEarnings());
         model.addAttribute("calculatedEarnings", calculateTrip.calculatePriceBasedOnInputData());
-//        model.addAttribute("difference", calculateTrip);
+        model.addAttribute("difference", calculateTrip.differentBetweenPriceAndCalculatedPrice());
 
 
 
