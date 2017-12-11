@@ -36,4 +36,14 @@ public class CalculateTrip {
 
         return priceBrutto;
     }
+
+    public float convertTimeToMinutes() {
+        float minutesConverted;
+        float secondsConverted;
+
+        secondsConverted = (float) this.seconds / 60;
+        minutesConverted = this.minutes + secondsConverted;
+
+        return minutesConverted;
+    }
 }
