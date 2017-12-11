@@ -19,7 +19,7 @@ public class MainController {
 
     @PostMapping("/")
     public String indexPost(@ModelAttribute("tripForm") TripForm tripForm) {
-        System.out.println(tripForm.getPrice());
+        System.out.println(tripForm.toString());
 
         return "index";
     }
