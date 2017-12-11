@@ -6,7 +6,7 @@ public class TripForm {
     private int minutes;
     private int seconds;
     private float distance;
-    private float muliplier;
+    private float multiplier;
 
     public TripForm() {
     }
@@ -43,12 +43,12 @@ public class TripForm {
         this.distance = distance;
     }
 
-    public float getMuliplier() {
-        return muliplier;
+    public float getMultiplier() {
+        return multiplier;
     }
 
-    public void setMuliplier(float muliplier) {
-        this.muliplier = muliplier;
+    public void setMultiplier(float multiplier) {
+        this.multiplier = multiplier;
     }
 
     @Override
@@ -62,7 +62,7 @@ public class TripForm {
         if (minutes != tripForm.minutes) return false;
         if (seconds != tripForm.seconds) return false;
         if (Float.compare(tripForm.distance, distance) != 0) return false;
-        return Float.compare(tripForm.muliplier, muliplier) == 0;
+        return Float.compare(tripForm.multiplier, multiplier) == 0;
     }
 
     @Override
@@ -71,7 +71,7 @@ public class TripForm {
         result = 31 * result + minutes;
         result = 31 * result + seconds;
         result = 31 * result + (distance != +0.0f ? Float.floatToIntBits(distance) : 0);
-        result = 31 * result + (muliplier != +0.0f ? Float.floatToIntBits(muliplier) : 0);
+        result = 31 * result + (multiplier != +0.0f ? Float.floatToIntBits(multiplier) : 0);
         return result;
     }
 
@@ -82,7 +82,7 @@ public class TripForm {
                 ", minutes=" + minutes +
                 ", seconds=" + seconds +
                 ", distance=" + distance +
-                ", muliplier=" + muliplier +
+                ", multiplier=" + multiplier +
                 '}';
     }
 }
