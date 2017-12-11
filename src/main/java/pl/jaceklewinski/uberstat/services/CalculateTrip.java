@@ -31,16 +31,16 @@ public class CalculateTrip {
         this.multiplier = tripForm.getMultiplier();
     }
 
-    public double calculateBruttoPrice() {
-        double priceBrutto;
+    public double calculateNettoPrice() {
+        double nettoPrice;
 
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         decimalFormat.setRoundingMode(RoundingMode.HALF_EVEN);
 
-        priceBrutto = this.price * 100 / 75;
-        decimalFormat.format(priceBrutto);
+        nettoPrice = this.price * this.driverPercentage;
+        decimalFormat.format(nettoPrice);
 
-        return priceBrutto;
+        return nettoPrice;
     }
 
     public double convertTimeToMinutes() {
