@@ -19,9 +19,17 @@ public class MainController {
     }
 
     @PostMapping("/")
-    public String indexPost(@ModelAttribute("tripForm") TripForm tripForm) {
-
+    public String indexPost(@ModelAttribute("tripForm") TripForm tripForm, Model model) {
         CalculateTrip calculateTrip = new CalculateTrip(tripForm);
+
+        model.addAttribute("price", tripForm.getPrice());
+//        model.addAttribute("commission", calculateTrip);
+//        model.addAttribute("earnings", calculateTrip);
+        model.addAttribute("calculatedEarnings", calculateTrip.calculatePriceBasedOnInputData());
+//        model.addAttribute("difference", calculateTrip);
+
+
+
 
 
 
